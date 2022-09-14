@@ -1,4 +1,4 @@
-// A simple program that accumulates into an integer
+// A simple program that continuously adds 1 to a result
 // By Nick from CoffeeBeforeArch
 
 int main() {
