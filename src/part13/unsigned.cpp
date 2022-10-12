@@ -26,6 +26,5 @@ int main() {
   std::cout << "Final sum = " << result << " = 0b" << std::bitset<32>(result)
             << '\n';
 
-
   return 0;
 }

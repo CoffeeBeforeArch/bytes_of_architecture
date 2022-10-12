@@ -49,7 +49,11 @@ int main() {
   float result = sign * exp_result * mantissa;
 
   // Print the final result
-  std::cout << "Final result = " << result << " = 0b" << bits << '\n';
+  // Get the bits using bitset (small hack with memcpy)
+  std::uint32_t memcpy_result = 0;
+  std::memcpy(&memcpy_result, &result, sizeof(float));
+  std::bitset<32> result_bits(memcpy_result);
+  std::cout << "Final result = " << result << " = 0b" << result_bits << '\n';
 
   return 0;
 }
