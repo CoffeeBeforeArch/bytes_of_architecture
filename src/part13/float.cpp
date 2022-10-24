@@ -9,25 +9,22 @@
 
 int main() {
   // Set our floating point value
-  float val = -0.625;
+  float val = -0.625f;
 
   // Get the bits using bitset (small hack with memcpy)
   std::uint32_t memcpy_val = 0;
   std::memcpy(&memcpy_val, &val, sizeof(float));
   std::bitset<32> bits(memcpy_val);
-
+  
   // Get the sign bit
   float sign = bits[31] ? -1.0f : 1.0f;
   std::cout << "Sign = " << sign << '\n';
-
+  
   // Calculate the exponent
   std::int32_t exponent = 0;
   for (int i = 0; i < 8; i++) {
     if (bits[i + 23]) {
-      if (i == 7)
-        exponent -= 1 << i;
-      else
-        exponent += 1 << i;
+      exponent += 1 << i;
     }
   }
 
